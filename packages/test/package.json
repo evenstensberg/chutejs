@@ -1,0 +1,32 @@
+{
+  "name": "test",
+  "version": "0.0.0",
+  "description": "> TODO: description",
+  "author": "Even Stensberg <evenstensberg@gmail.com>",
+  "homepage": "https://github.com/evenstensberg/chutejs#readme",
+  "license": "MIT",
+  "main": "lib/test.mjs",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/evenstensberg/chutejs.git"
+  },
+  "scripts": {
+    "test": "node ./lib/test.mjs"
+  },
+  "bugs": {
+    "url": "https://github.com/evenstensberg/chutejs/issues"
+  },
+  "dependencies": {
+    "jasmine": "^3.7.0"
+  },
+  "devDependencies": {
+    "jasmine-ts-console-reporter": "^3.1.1"
+  }
+}
