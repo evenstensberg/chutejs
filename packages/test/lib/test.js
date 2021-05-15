@@ -1,9 +1,9 @@
-'use strict';
+#!/usr/bin/env node
 
-import Jasmine from 'jasmine';
+const Jasmine = require('jasmine');
 const jasmine = new Jasmine();
 
-export default function test() {
+function test(options) {
   /*   jasmine.loadConfigFile('spec/support/jasmine.json'); */
 
     jasmine.loadConfig({
@@ -26,8 +26,12 @@ export default function test() {
             console.log('At least one spec has failed');
         }
     });
-    jasmine.execute();
+    console.log(options);
+    const proc_pwd = process.cwd();
+    const path = require('path');
+    const fp = path.resolve(proc_pwd, options[2]);
+    jasmine.execute([fp]);
 
 }
 
-test()
+test(process.argv)

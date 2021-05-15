@@ -20,6 +20,9 @@
   "scripts": {
     "test": "node ./lib/test.mjs"
   },
+  "bin": {
+    "chute": "./lib/test.js"
+  },
   "bugs": {
     "url": "https://github.com/evenstensberg/chutejs/issues"
   },
