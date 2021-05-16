@@ -1,39 +1,28 @@
 'use strict';
 
-
 class ChuteJS {
-    constructor(options) {
-
+    constructor(config, incomingTests) {
+        let tests = [];
+        if (typeof tests === 'object') {
+            tests = [incomingTests];
+        } else if (Array.isArray(tests)) {
+            tests = tests.push(incomingTests);
+        }
+        return;
     }
 
+    configureReporters() {}
 
-    configureReporters() {
+    beforeTests() {}
 
-    }
+    afterTestCompleted() {}
 
-    beforeTests() {
+    onError() {}
 
-    }
+    beforeLint() {}
 
-    afterTestCompleted() {
-
-    }
-
-    onError() {
-
-    }
-
-
-    beforeLint() {
-
-    }
-
-    afterLint() {
-    }
-    afterCompleted() {
-    }
+    afterLint() {}
+    afterCompleted() {}
 }
 
-export default function core() {
-    // TODO
-}
+module.exports = ChuteJS;
