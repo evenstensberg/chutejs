@@ -8,14 +8,7 @@ const defaultConfig = {
 };
 
 class ChuteJS {
-    constructor(config=defaultConfig, incomingTests) {
-        let tests = [];
-        if (typeof tests === 'object') {
-            tests = [incomingTests];
-        } else if (Array.isArray(tests)) {
-            tests = tests.push(incomingTests);
-        }
-        return;
+    constructor(config=defaultConfig) {
     }
 
     configureReporters() {}
@@ -30,6 +23,16 @@ class ChuteJS {
 
     afterLintCompleted() {}
     afterCompleted() {}
+
+    run(incomingTests) {
+        let tests = [];
+        if (typeof tests === 'object') {
+            tests = [incomingTests];
+        } else if (Array.isArray(tests)) {
+            tests = tests.push(incomingTests);
+        }
+        return;
+    }
 }
 
 module.exports = ChuteJS;

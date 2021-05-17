@@ -43,3 +43,13 @@ TBD
 ### afterCompleted
 
 TBD
+
+### run
+
+```js
+const ChuteJS = require('chutejs');
+
+const Chute = new ChuteJS(options, [tests]);
+
+Chute.run([tests])
+```
