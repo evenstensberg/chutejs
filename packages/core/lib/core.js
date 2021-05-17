@@ -1,7 +1,14 @@
 'use strict';
 
+
+const defaultConfig = {
+    exitOnError: false,
+    lint: true,
+    testStyles: true
+};
+
 class ChuteJS {
-    constructor(config, incomingTests) {
+    constructor(config=defaultConfig, incomingTests) {
         let tests = [];
         if (typeof tests === 'object') {
             tests = [incomingTests];
@@ -15,13 +22,13 @@ class ChuteJS {
 
     beforeTests() {}
 
-    afterTestCompleted() {}
+    afterTestsCompleted() {}
 
     onError() {}
 
     beforeLint() {}
 
-    afterLint() {}
+    afterLintCompleted() {}
     afterCompleted() {}
 }
 
