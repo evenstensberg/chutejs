@@ -11,7 +11,7 @@ testing library for css
 
 const ChuteJS = require('chutejs');
 
-const Chute = new ChuteJS(options, [tests]);
+const Chute = new ChuteJS(configuration);
 ```
 
 
@@ -49,7 +49,7 @@ TBD
 ```js
 const ChuteJS = require('chutejs');
 
-const Chute = new ChuteJS(options, [tests]);
+const Chute = new ChuteJS(configuration);
 
 Chute.run([tests])
 ```
