@@ -11,6 +11,10 @@ module.exports = function (yargs) {
                 type: 'boolean',
                 describe: 'Invoke watch mode',
             },
+            lint: {
+                type: 'string',
+                describe: 'Lint given directory or file',
+            },
         })
         .strict();
 };

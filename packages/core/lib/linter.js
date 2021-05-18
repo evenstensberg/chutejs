@@ -1,10 +1,15 @@
+const stylelint = require('stylelint')
 class Linter {
-    constructor() {}
+    constructor(lintConfiguration) {
+        
+    }
 
-    async runLinting() {
+    async lint() {
         const lintingData = await stylelint.lint({
                 files: './*.css',
             })
         console.log(lintingData)
     }
 }
+
+module.exports = Linter;

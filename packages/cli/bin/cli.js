@@ -14,6 +14,11 @@ yargs.parse(process.argv, async function (error, argv) {
         console.log(helpOutput);
         return;
     }
-    
-    console.log(argv);
+
+    const ChuteJS = require('@chutejs/core');
+    const Chute = new ChuteJS();
+    if(argv['lint']) {
+        Chute.lint()
+    }
+  /*   console.log(argv); */
 });

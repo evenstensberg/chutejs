@@ -38,6 +38,7 @@
     "url": "https://github.com/evenstensberg/chutejs/issues"
   },
   "dependencies": {
+    "@chutejs/core": "^0.0.0",
     "yargs": "^17.0.1"
   },
   "devDependencies": {

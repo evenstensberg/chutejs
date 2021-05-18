@@ -36,6 +36,9 @@ class ChuteJS {
         await Linter.runLinting();
         return;
     }
+    async lint() {
+        return this.linter.lint()
+    }
 }
 
 module.exports = ChuteJS;
