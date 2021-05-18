@@ -1,5 +1,6 @@
 'use strict';
 
+const Linter = require('./linter');
 
 const defaultConfig = {
     exitOnError: false,
@@ -9,6 +10,7 @@ const defaultConfig = {
 
 class ChuteJS {
     constructor(config=defaultConfig) {
+        this.linter = new Linter();
     }
 
     configureReporters() {}
@@ -24,13 +26,14 @@ class ChuteJS {
     afterLintCompleted() {}
     afterCompleted() {}
 
-    run(incomingTests) {
+    async run(incomingTests) {
         let tests = [];
         if (typeof tests === 'object') {
             tests = [incomingTests];
         } else if (Array.isArray(tests)) {
             tests = tests.push(incomingTests);
         }
+        await Linter.runLinting();
         return;
     }
 }
