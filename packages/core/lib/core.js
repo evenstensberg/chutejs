@@ -2,17 +2,20 @@
 
 const Linter = require('./linter');
 const TestRunner = require('./test-runner');
+const ConfigReader = require('./config-reader');
 
 const defaultConfig = {
     exitOnError: false,
     lint: true,
-    testStyles: true
+    testStyles: true,
+
 };
 
 class ChuteJS {
     constructor(config=defaultConfig) {
         this.linter = new Linter();
-        this.runner = new TestRunner()
+        this.runner = new TestRunner();
+        this.configReader = new ConfigReader();
     }
 
     configureReporters() {}
@@ -48,20 +51,24 @@ class ChuteJS {
         await this.runner.run()
     }
 
-    async run(incomingTests, incomingLints) {
-        let tests = [];
-        if (typeof incomingTests === 'object') {
-            tests = [incomingTests];
-        } else if (Array.isArray(incomingTests)) {
-            tests = tests.push(incomingTests);
+    parseSingleItemToArray(object) {
+        let array = [];
+        if (typeof object === 'object') {
+            array = [object];
+        } else if (Array.isArray(object)) {
+            array = array.push(object);
         }
+        return array;
+    }
 
-        let lints = [];
-        if (typeof incomingLints === 'object') {
-            lints = [incomingLints];
-        } else if (Array.isArray(incomingLints)) {
-            lints = lints.push(incomingLints);
-        }
+    parseTests(incomingTests, incomingLints) {
+        let lints = this.parseSingleItemToArray(incomingTests);
+        let tests = this.parseSingleItemToArray(incomingLints);
+        return [lints, tests];
+    }
+    async run(incomingTests, incomingLints) {
+        const [tests, lints] = this.parseTests(incomingTests, incomingLints);
+        await this.configReader.readFiles();
         await this.linter.runLinting();
         await this.runner.run();
     }
