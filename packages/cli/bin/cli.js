@@ -20,5 +20,8 @@ yargs.parse(process.argv, async function (error, argv) {
     if(argv['lint']) {
         Chute.lint()
     }
+    if(argv['test']) {
+        Chute.runTests()
+    }
   /*   console.log(argv); */
 });

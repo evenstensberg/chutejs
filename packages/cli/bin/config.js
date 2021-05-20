@@ -15,6 +15,10 @@ module.exports = function (yargs) {
                 type: 'string',
                 describe: 'Lint given directory or file',
             },
+            test: {
+                type: 'string',
+                describe: 'Test given directory or file',
+            }
         })
         .strict();
 };
