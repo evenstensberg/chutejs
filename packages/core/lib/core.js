@@ -1,5 +1,7 @@
 'use strict';
 
+
+const Jasmine = require('jasmine');
 const Linter = require('./linter');
 const TestRunner = require('./test-runner');
 const ConfigReader = require('./config-reader');
@@ -16,17 +18,30 @@ class ChuteJS {
         this.linter = new Linter();
         this.runner = new TestRunner();
         this.configReader = new ConfigReader();
+        this.jasmine = new Jasmine();
     }
 
-    configureReporters() {}
+    configureReporters() {
+        this.jasmine.configureDefaultReporter({
+            showColors: true,
+          });
+    }
 
-    beforeTests() {}
+    beforeTests(cb) {
+        cb(arguments)
+    }
 
-    afterTestsCompleted() {}
+    afterTestsCompleted(cb) {
+        jasmine.onComplete(cb);
+    }
 
-    onError() {}
+    onError(cb) {
+        cb(arguments)
+    }
 
-    beforeLint() {}
+    beforeLint(cb) {
+        cb(arguments);
+    }
 
     afterLintCompleted() {}
     afterCompleted() {}
