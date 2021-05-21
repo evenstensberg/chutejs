@@ -14,11 +14,12 @@ const defaultConfig = {
 };
 
 class ChuteJS {
-    constructor(config=defaultConfig) {
+    constructor(config) {
         this.linter = new Linter();
         this.runner = new TestRunner();
         this.configReader = new ConfigReader();
         this.jasmine = new Jasmine();
+        this.configuration = Object.assign(defaultConfig, config);
     }
 
     configureReporters() {
