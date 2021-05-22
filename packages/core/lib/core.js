@@ -64,6 +64,7 @@ class ChuteJS {
         } else if (Array.isArray(incomingTests)) {
             tests = tests.push(incomingTests);
         }
+        await this.configureReporters();
         await this.runner.run()
     }
 
@@ -87,6 +88,8 @@ class ChuteJS {
         await this.configReader.readFiles();
         await this.linter.runLinting();
         await this.runner.run();
+        await this.configureReporters();
+        await this.runTests()
     }
 }
 
