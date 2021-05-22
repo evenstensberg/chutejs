@@ -48,22 +48,12 @@ class ChuteJS {
     afterCompleted() {}
 
     async lint(incomingLints) {
-        let tests = [];
-        if (typeof tests === 'object') {
-            tests = [incomingLints];
-        } else if (Array.isArray(incomingLints)) {
-            tests = tests.push(incomingLints);
-        }
+        let tests = this.parseSingleItemToArray(incomingLints);
         await this.linter.lint();
         return;
     }
     async runTests(incomingTests) {
-        let tests = [];
-        if (typeof incomingTests === 'object') {
-            tests = [incomingTests];
-        } else if (Array.isArray(incomingTests)) {
-            tests = tests.push(incomingTests);
-        }
+        let tests = this.parseSingleItemToArray(incomingTests);
         await this.configureReporters();
         await this.runner.run()
     }
